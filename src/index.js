@@ -7,6 +7,9 @@ import App from "./App";
 const { worker } = require('./mocks/browser');
 worker.start();
 
+import {  }
+
+
 const rootElement = document.getElementById("root");
 
 ReactDOM.render(
