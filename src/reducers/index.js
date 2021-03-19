@@ -11,11 +11,17 @@ export const initialState = {
 const reducer = (state=initialState, action)=>{
     switch(action.type){
         case(FETCH_SMURF_START):
-            return state;
+            return ({
+                ...state, isLoading: true,
+            })
         case(FETCH_SMURF_SUCCESS):
-            return state;
+            return ({
+                ...state, isLoading: false, smurfs: action.payload,
+            })
         case(FETCH_SMURF_FAILURE):
-            return state;
+            return ({
+                ...state, isLoading: false, error: action.payload,
+            })
         case(ADD_SMURF):
         const newSmurf= {
             name: "",

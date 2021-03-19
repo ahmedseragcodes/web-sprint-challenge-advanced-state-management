@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { connect } from "react-redux";
+
 const AddForm = (props) => {
     const [state, setState] = useState({
         name:"",
