@@ -1,8 +1,52 @@
+import { FETCH_SMURF_START, FETCH_SMURF_SUCCESS, FETCH_SMURF_FAILURE, ADD_SMURF, ADD_ERROR } from "../actions/index";
+
 
 export const initialState = {
+    smurfs: [],
+    isLoading: false,
+    error: "",
 }
 
-const reducer = ()=>{
+
+const reducer = (state=initialState, action)=>{
+    switch(action.type){
+        case(FETCH_SMURF_START):
+            return ({
+                ...state, isLoading: true,
+            })
+        case(FETCH_SMURF_SUCCESS):
+            return ({
+                ...state, isLoading: false, smurfs: action.payload,
+            })
+        case(FETCH_SMURF_FAILURE):
+            return ({
+                ...state, isLoading: false, error: action.payload,
+            })
+        case(ADD_SMURF):
+        const newSmurf= {
+            name: action.payload.name,
+            nickname: action.payload.nickname,
+            position: action.payload.position,
+            description: action.payload.description,
+            id: Date.now(),
+        }
+            return ({
+                ...state,
+                isLoading: false,
+                smurfs: [
+                    ...state.smurfs, newSmurf
+                ]
+
+            })
+        case(ADD_ERROR):
+            return ({
+                ...state,
+                isLoading: false,
+                error: action.payload
+            })
+        default:
+            return state;
+    }
 }
 
 export default reducer;

@@ -1,7 +1,10 @@
 import React from 'react';
 
+
 const Smurf = (props)=> {
     const { smurf } = props;
+
+    console.log("WHAT A SMURF LOOKS LIKE IN SMURF COMPONENT", smurf);
     
     return(<div data-testid="smurf" className="card">
         <div className="card-body">
@@ -13,5 +16,8 @@ const Smurf = (props)=> {
         </div>
     </div>);
 }
+
+
+
 
 export default Smurf;
